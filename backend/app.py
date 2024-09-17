@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import pytz
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -10,8 +11,10 @@ CORS(app)
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String(100), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    description = db.Column(db.Text, nullable=False)
+  #  created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(pytz.timezone('Africa/Nairobi')))
+
 
     def __repr__(self):
         return f"Event: {self.description}"
