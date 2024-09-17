@@ -7,7 +7,7 @@ import pytz
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://event_4x4o_user:jhYtYoObfPTHyOQWkr40peS8qw1FkXrY@dpg-crkm833tq21c73dceqi0-a.oregon-postgres.render.com/event_4x4o'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:feature_2024@localhost/baby-tracker'
 # 'postgresql://postgres:feature_2024@localhost/baby-tracker'
 # postgresql://event_4x4o_user:jhYtYoObfPTHyOQWkr40peS8qw1FkXrY@dpg-crkm833tq21c73dceqi0-a.oregon-postgres.render.com/event_4x4o
 db = SQLAlchemy(app)
