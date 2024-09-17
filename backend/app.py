@@ -1,4 +1,3 @@
-import os
 
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
@@ -7,7 +6,7 @@ import pytz
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:feature_2024@localhost/baby-tracker'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://default:h5gKFfCpR4yZ@ep-silent-cell-a4uvpiik.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require'
 db = SQLAlchemy(app)
 CORS(app)
 
