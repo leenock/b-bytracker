@@ -1,10 +1,12 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:feature_2024@localhost/baby-tracker'
 db = SQLAlchemy(app)
+CORS(app)
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -42,7 +44,7 @@ def create_event():
 # get all the events
 @app.route('/events', methods=['GET'])
 def get_events():
-    events= Event.query.order_by(Event.id.asc()).all()
+    events= Event.query.order_by(Event.created_at.asc()).all()
     event_list = []
     for event in events:
         event_list.append(format_event(event))
